@@ -133,7 +133,17 @@ venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject
-
+data/document_folds/train
+data/overall/train
+checkpoints*
+demo/results_acp.csv
+demo/analyze.ipynb
+demo/demo
+demo/demoenv
+generation/train_k_fold.py
+demo/results.csv
+demo/sents.json
+# demo/comparison_with_xia.txt
 # Rope project settings
 .ropeproject
 

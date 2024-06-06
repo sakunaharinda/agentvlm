@@ -63,11 +63,9 @@ preds = []
 
 ver_tokenizer = AutoTokenizer.from_pretrained(VER_MODEL_NAME)
 
-# model = BertForSequenceClassification.from_pretrained('checkpoints/bert/checkpoint-1100/').to('cuda:0')
 ver_model = AutoModelForSequenceClassification.from_pretrained(verification_ckpt).to(
     ver_device
 )
-# ver_model.config.use_cache = True
 ver_model.eval()
 
 for i in tqdm(range(len(ver_test_df))):

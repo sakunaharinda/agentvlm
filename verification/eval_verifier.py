@@ -3,14 +3,14 @@ os.environ['CUDA_VISIBLE_DEVICES'] = "3"
 
 import warnings
 warnings.filterwarnings("ignore")
-
+import numpy as np
 import ast
 import torch
 from transformers import (
     AutoTokenizer,
     AutoModelForSequenceClassification,
 )
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, matthews_corrcoef, auc
 import pandas as pd
 from dataset.utils import prepare_inputs_bart, create_out_string
 from tqdm import tqdm
@@ -86,6 +86,8 @@ for i in preds:
     
 
 print(classification_report(truth_bin, preds_bin, target_names=['incorrect', 'correct']))
+print()
+print(f"MCC: {matthews_corrcoef(np.array(truth_bin), np.array(preds_bin))}")
 print()
 print(classification_report(truth, preds, target_names=ERRORS))
 

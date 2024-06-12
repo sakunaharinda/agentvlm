@@ -166,24 +166,6 @@ def generate_and_verify(dataset, ex_model_name, peft_model_id, enable_verificati
                     # del true_inp
                 
     true_srls, pred_srls = copy.deepcopy(truesrls), copy.deepcopy(predsrls)
-
-    for sents, true_acp, pred_acp in zip(inputs, true_pols, pred_pols):
-        t = create_out_string(ast.literal_eval(str(true_acp)))
-        if pred_acp == []:
-            p = '{}'
-        else:
-            p = create_out_string(ast.literal_eval(str(pred_acp)))
-
-        ss.append(sents.split('\nEntities:')[0].split("Policy: ")[1])
-        ts.append(t)
-        ps.append(p)
-
-    ddf = pd.DataFrame({
-        'input': ss,
-        'true': ts,
-        'pred': ps
-    })
-    ddf.to_csv("../../data/verification/test_predictions_verification_llama.csv")
     e = AccessEvaluator(true_pols, pred_pols, true_srls, pred_srls, inputs, confs, true_confs, cats=cats)
     results,incorrect_preds = e.evaluate()
     

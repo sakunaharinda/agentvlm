@@ -1,12 +1,11 @@
 import os
-os.environ['CUDA_VISIBLE_DEVICES'] = "6"
+
 from pathlib import Path
 import click
 import torch
 from peft import PeftModel
 from transformers import (
     AutoModelForCausalLM,
-    BitsAndBytesConfig,
     AutoTokenizer,
     AutoModelForSequenceClassification,
 )
@@ -14,7 +13,7 @@ import copy
 import json
 import re
 import utils
-from utils import config_loader, data_loader, create_out_string
+from utils import config_loader, data_loader
 import pandas as pd
 from tqdm import tqdm
 

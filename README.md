@@ -11,7 +11,7 @@ Code repository for the paper "AGentV: Access Control Policy Generation and Veri
 
 By developing this framework we improves the reliability of automated policy generation process and, in turn, reduce the data breaches due to access control failures in the future.
 
-<img src="images/framework_arch.png" align="middle" width="100%">
+<img src="images/agentv.png" align="middle" width="100%">
 
 #### Demo
 

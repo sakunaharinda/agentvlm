@@ -4,14 +4,14 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Demo"/>
 </a> -->
 
-Code repository for the paper "AGentV: Access Control Policy Generation and Verification Framework with Language Models". AGentV is a framework developed to using language models and large language models to,
-* Identify natural languge policies (NLACPs) from high-level requirement specification documents of an organization (using [BERT LM](https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertModel))
-* Translate identified NLACPs into structured representations seperating access control rules (ACRs) with five policy components: subjects, actions, resources, purposes, and conditions (using [LLaMa 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B))
+Code repository for the paper "AGentV: Access Control Policy Generation and Verification Framework with Language Models". AGentV is a framework developed to use language models and large language models to,
+* Identify natural language policies (NLACPs) from high-level requirement specification documents of an organization (using [BERT LM](https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertModel))
+* Translate identified NLACPs into structured representations separating access control rules (ACRs) with five policy components: subjects, actions, resources, purposes, and conditions (using [LLaMa 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B))
 * Automatically verify the generated structured representations and provide feedback to the administrators if the representation is incorrect, mentioning the reason/error (using [BART LM](https://huggingface.co/facebook/bart-large)) and the location of the error in the generated policy (using integrated gradients feature attribution via [Captum](https://captum.ai/docs/attribution_algorithms#integrated-gradients)).
 
-By developing this framework we improves the reliability of automated policy generation process and, in turn, reduce the data breaches due to access control failures in the future.
+By developing this framework, we improve the reliability of the automated policy generation process and, in turn, reduce the data breaches due to access control failures in the future.
 
-<img src="images/agentv.png" align="middle" width="100%">
+<img src="images/agentv_new.png" align="middle" width="100%">
 
 #### Demo
 
@@ -30,7 +30,7 @@ Clone the repository
 $ git clone https://github.com/accessframework/agentv.git
 $ cd agentv/
 ```
-(Recommended) Create a new python virtual environment
+(Recommended) Create a new Python virtual environment
 ```bash
 $ python3 -m venv venv
 $ source venv/bin/activate
@@ -81,11 +81,11 @@ When evaluating the proposed framework's ability to generate structured represen
 1. Evaluating its ability to extract policy components from NLACPs
     * SAR : Extracting subjects and resources for each action (to compare with previous research as they cannot extract any other components)
     * SARCP : By going beyond all the existing frameworks, extracting subjects, resources, purposes, and conditions for each action
-2. Evaluating its ability to generate ACRs directly from NLACPs (NOTE: Each ACR should contain its own access decision (which is not considered in existing frameworks), subject, action, resource, purpose and condition)
+2. Evaluating its ability to generate ACRs directly from NLACPs (NOTE: Each ACR should contain its own access decision (which is not considered in existing frameworks), subject, action, resource, purpose, and condition)
 
 #### SAR setting evaluation
 
-To reproduce the results under SAR setting as reported in the paper, either load the model utilizing the downloaded checkpoints and evaluate on the dataset using the following commands with `<mode> = [collected|ibm|t2p|acre|cyber]`
+To reproduce the results under the SAR setting as reported in the paper, either load the model utilizing the downloaded checkpoints and evaluate on the dataset using the following commands with `<mode> = [collected|ibm|t2p|acre|cyber]`
 
 ```bash
 $ cd generation/evaluation/
@@ -136,10 +136,10 @@ Options:
                                   Mode of training (document-fold you want to evaluate the trained model on)  [default: t2p; required]
 ```
 
-After running the above command it will result in two F1 scores, one showing the ability to extract components, and the other showing the ability to generate ACRs. 
->NOTE: Here we run the trained model on `overall` dataset together with the verification model to output verfication results (if necessary) to evaluate the verifier.
+After running the above command, it will result in two F1 scores, one showing the ability to extract components and the other showing the ability to generate ACRs. 
+>NOTE: Here, we run the trained model on the `overall` dataset together with the verification model to output verification results (if necessary) to evaluate the verifier.
 
-Furthermore, similar to the SAR setting, pre-saved entities can also be used to get the F1 score of component extraction using the follwoing command with `<mode> = [collected|ibm|t2p|acre|cyber|overall]`.
+Furthermore, similar to the SAR setting, pre-saved entities can also be used to get the F1 score of component extraction using the following command with `<mode> = [collected|ibm|t2p|acre|cyber|overall]`.
 
 ```bash
 $ python srl_results_sarcp.py --mode=<mode>
@@ -147,7 +147,7 @@ $ python srl_results_sarcp.py --mode=<mode>
 
 ### Access control policy verification
 
-To reproduce the results for the verifier, run the follwoing command.
+To reproduce the results for the verifier, run the following command.
 
 ```bash
 $ cd verification/
@@ -163,7 +163,7 @@ Next we will see how to train each component of our proposed framework with your
 
 ### NLACP Identification
 
-To fine-tune BERT with your own data to identify NLACPs, run the follwoing commands,
+To fine-tune BERT with your own data to identify NLACPs, run the following commands,
 
 ```bash
 $ cd identification/
@@ -212,7 +212,7 @@ Usage: train_generator.py [OPTIONS]
 
 ### Access control policy verification
 
-Before training the verifier, we first need to create the dataset using the techniques mentioned in the paper. To do that run the following command,
+Before training the verifier, we first need to create the dataset using the techniques mentioned in the paper. To do that, run the following command,
 
 ```bash
 $ cd verification/dataset/
@@ -234,7 +234,7 @@ Options:
   --save_name TEXT     Name of the final dataset  [default: verification_dataset.csv]
 ```
 
-After the dataset is generated, verifier can be trained using the following command,
+After the dataset is generated, the verifier can be trained using the following command,
 
 ```bash
 $ cd verification/

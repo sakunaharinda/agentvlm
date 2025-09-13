@@ -4,7 +4,7 @@
   <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Demo"/>
 </a> -->
 
-Code repository for the paper "AGentVLM: Access Control Policy Generation and Verification Framework with Language Models". AGentV is a framework developed to use language models and large language models to,
+Code repository for the paper "AGentVLM: Access Control Policy Generation and Verification Framework with Language Models". AGentVLM is a framework developed to use language models and large language models to,
 * Identify natural language policies (NLACPs) from high-level requirement specification documents of an organization (using [BERT LM](https://huggingface.co/docs/transformers/model_doc/bert#transformers.BertModel))
 * Translate identified NLACPs into structured representations separating access control rules (ACRs) with five policy components: subjects, actions, resources, purposes, and conditions (using [LLaMa 3 8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B))
 * Automatically verify the generated structured representations and provide feedback to the administrators if the representation is incorrect, mentioning the reason/error (using [BART LM](https://huggingface.co/facebook/bart-large)) and the location of the error in the generated policy (using integrated gradients feature attribution via [Captum](https://captum.ai/docs/attribution_algorithms#integrated-gradients)).
@@ -18,8 +18,8 @@ By developing this framework, we improve the reliability of the automated policy
 The provided demo with HotCRP privacy policies can be run in the terminal using the following commands.
 
 ```bash
-$ git clone https://github.com/accessframework/agentv.git
-$ cd agentv/demo
+$ git clone https://github.com/accessframework/agentvlm.git
+$ cd agentvlm/demo
 $ ./demo.sh
 ```
 
@@ -27,8 +27,8 @@ $ ./demo.sh
 ### Installation
 Clone the repository
 ```bash
-$ git clone https://github.com/accessframework/agentv.git
-$ cd agentv/
+$ git clone https://github.com/sakunaharinda/agentvlm.git
+$ cd agentvlm/
 ```
 (Recommended) Create a new Python virtual environment
 ```bash

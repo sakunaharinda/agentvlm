@@ -18,7 +18,7 @@ By developing this framework, we improve the reliability of the automated policy
 The provided demo with HotCRP privacy policies can be run in the terminal using the following commands.
 
 ```bash
-$ git clone https://github.com/accessframework/agentvlm.git
+$ git clone https://github.com/sakunaharinda/agentvlm.git
 $ cd agentvlm/demo
 $ ./demo.sh
 ```
